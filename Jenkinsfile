@@ -27,7 +27,7 @@ pipeline{
                   steps{
                         archiveArtifacts artifacts:  '**/*.txt',
                                  onlyIfSuccessful: true
-                        junit testResults: '**/surefire-reports/TEST-*.xml'
+                        junit testResults: '**/TEST-*.xml'
                   }
             }
 

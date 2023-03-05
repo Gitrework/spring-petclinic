@@ -9,7 +9,7 @@ pipeline {
         }
         stage('package') {
             tools {
-                jdk 'JAVA-17-jdk'
+                jdk 'JAVA-17-JDK'
             }
             steps {
                  sh 'mvn package'

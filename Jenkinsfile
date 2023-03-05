@@ -25,9 +25,9 @@ pipeline{
            }
             stage('buld') {
                   steps{
-                        archiveArtifacts artifacts:  '**/*.txt',
+                        archiveArtifacts artifacts:  '**/target/spring-petclinic-3.0.0-SNAPSHOT.jar',
                                  onlyIfSuccessful: true
-                        junit testResults: '**/TEST-*.xml'
+                        junit testResults: '**/surefire-reports/TEST-*.xml'
                   }
             }
 

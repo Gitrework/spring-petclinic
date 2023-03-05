@@ -1,8 +1,5 @@
 pipeline {
     agent { label 'SONAR-NODE' }
-    parameters {
-        choice(name: 'MAVEN_GOAL', choices: ['package', 'install', 'clean'], description: 'Maven Goal')
-    }
     stages {
         stage('vcs') {
             steps {
@@ -11,13 +8,16 @@ pipeline {
             }
         }
         stage('package') {
-           steps {
+            tools {
+                jdk 'JAVA-17-jdk'
+            }
+            steps {
                  sh 'mvn package'
            }
         }
         stage('post build') {
             steps {
-                archiveArtifacts artifacts: '**/target/spring-petclinic-3.0.0-SNAPSHOT.jar',
+                archiveArtifacts artifacts: '**/*.txt',
                                  onlyIfSuccessful: true
                 junit testResults: '**/surefire-reports/TEST-*.xml'
             }

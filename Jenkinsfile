@@ -21,9 +21,8 @@ pipeline {
         }
         stage('sonar analysis') {
             steps {
-                // performing sonarqube analysis with "withSonarQubeENV(<Name of Server configured in Jenkins>)"
-                withSonarQubeEnv('SONAR_CLOUD') {
-                    sh 'mvn clean package verify sonar:sonar -Dsonar.login=347947eb6562c86f329029f668687056135cd4e5 -Dsonar.organization=SONAR_DEVELOP1'
+                  withSonarQubeEnv('SONAR_CLOUD') {
+                 sh 'mvn clean package sonar:sonar -Dsonar.organization=SONAR_DEVELOP1'
                 }
             }
         }

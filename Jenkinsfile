@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'JDK_17' }
+    agent { label 'SONAR-NODE' }
     stages {
         stage('vcs') {
             steps {

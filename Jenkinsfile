@@ -22,7 +22,7 @@ pipeline {
         stage('sonar analysis') {
             steps {
                   withSonarQubeEnv('SONAR_CLOUD') {
-                 sh 'mvn clean package sonar:sonar -Dsonar.organization=SONAR_DEVELOP1'
+                    sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=narayanasonar_sonarproject -Dsonar.organization=narayanasonar'
                 }
             }
         }
@@ -34,4 +34,4 @@ pipeline {
             }
         }
     }
-} 
+}
